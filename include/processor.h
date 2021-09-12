@@ -3,18 +3,18 @@
 
 class Processor {
  public:
-  float Utilization();
+  double Utilization();
 
  private:
-  float prev_idle_ = 0.0;
-  float prev_non_idle_ = 0.0;
-  float prev_total_ = 0.0;
-  float idle_ = 0.0;
-  float non_idle_ = 0.0;
-  float total_ = 0.0;
-  float total_delta_ = 0.0;
-  float idle_delta_ = 0.0;
-  float util_ = 0.0;
+  double prev_idle_ = 0.0;
+  double prev_non_idle_ = 0.0;
+  double prev_total_ = 0.0;
+  double idle_ = 0.0;
+  double non_idle_ = 0.0;
+  double total_ = 0.0;
+  double total_delta_ = 0.0;
+  double idle_delta_ = 0.0;
+  double util_ = 0.0;
 };
 
 #endif

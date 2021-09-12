@@ -8,12 +8,12 @@
 using std::string;
 using std::vector;
 
-float Processor::Utilization() {
+double Processor::Utilization() {
   vector<string> line_vec = LinuxParser::CpuUtilization();
-  vector<float> numbers;
+  vector<double> numbers;
 
   for (size_t i = 0; i < line_vec.size(); i++) {
-    if (i > 0) numbers.emplace_back(std::stof(line_vec[i]));
+    if (i > 0) numbers.emplace_back(std::stod(line_vec[i]));
   }
 
   idle_ = numbers[LinuxParser::CPUStates::kIdle_] +

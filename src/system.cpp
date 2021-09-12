@@ -3,7 +3,6 @@
 #include <unistd.h>
 
 #include <cstddef>
-#include <set>
 #include <string>
 #include <vector>
 
@@ -11,10 +10,7 @@
 #include "process.h"
 #include "processor.h"
 
-using std::set;
-using std::size_t;
-using std::string;
-using std::vector;
+using namespace std;
 
 Processor& System::Cpu() { return cpu_; }
 
@@ -22,20 +18,19 @@ vector<Process>& System::Processes() {
   processes_.clear();
   vector<int> pids = LinuxParser::Pids();
   for (int pid : pids) {
-    Process p{pid};
-    processes_.emplace_back(p);
+    processes_.emplace_back(pid);
   }
-  std::sort(processes_.begin(), processes_.end(),
-            [](Process& a, Process& b) { return a < b; });
-  std::reverse(processes_.begin(), processes_.end());
+  sort(processes_.begin(), processes_.end(),
+       [](Process& a, Process& b) { return a < b; });
+  reverse(processes_.begin(), processes_.end());
   return processes_;
 }
 
-std::string System::Kernel() { return LinuxParser::Kernel(); }
+string System::Kernel() { return LinuxParser::Kernel(); }
 
 float System::MemoryUtilization() { return LinuxParser::MemoryUtilization(); }
 
-std::string System::OperatingSystem() { return LinuxParser::OperatingSystem(); }
+string System::OperatingSystem() { return LinuxParser::OperatingSystem(); }
 
 int System::RunningProcesses() { return LinuxParser::RunningProcesses(); }
 
