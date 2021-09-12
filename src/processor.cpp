@@ -12,7 +12,7 @@ float Processor::Utilization() {
   vector<string> line_vec = LinuxParser::CpuUtilization();
   vector<float> numbers;
 
-  for (int i = 0; i < line_vec.size(); i++) {
+  for (size_t i = 0; i < line_vec.size(); i++) {
     if (i > 0) numbers.emplace_back(std::stof(line_vec[i]));
   }
 
